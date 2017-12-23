@@ -2,7 +2,7 @@
  * @Author: Rhymedys/Rhymedys@gmail.com
  * @Date: 2017-12-11 10:56:58
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2017-12-11 11:08:54
+ * @Last Modified time: 2017-12-23 20:24:20
  */
 const utils = require('loader-utils')
 
@@ -10,7 +10,7 @@ module.exports = function (source, map, meta) {
   this.cacheable()
   const option = utils.getOptions(this) || {}
   const fileName = option.fileName && option.fileName.toLowerCase() || 'appconfig'
-  if (map && map.sources[0].substring(map.sources[0].lastIndexOf('\\') + 1, map.sources[0].lastIndexOf('.')).toLowerCase() === fileName) {
+  if (this.resourcePath && this.resourcePath.substring(this.resourcePath.lastIndexOf('\\') + 1, this.resourcePath.lastIndexOf('.')).toLowerCase() === fileName) {
     let appConfig = option.configs
     if (appConfig) {
       let res = {}

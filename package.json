@@ -1,6 +1,6 @@
 {
   "name": "set-product-config-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "set AppConfig to default when in product's development",
   "main": "src/index.js",
   "directories": {
