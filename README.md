@@ -21,6 +21,7 @@ export const isDebugLog = false  // production environment state
 npm i set-product-config-loader
 ```
 ### Config
+add as webpack loader in webpack config file
 ```Javascript
 {
   test: /\.js$/,
