@@ -28,8 +28,7 @@ npm i set-product-config-loader
   include: [resolve('src')],
   options: {
     fileName:AppConfig, // default value is AppConfig
-    // the key to set default value 'false' or you can set defined value by this way ——configs: [{isDebugApi:false}]
-    configs: ['isDebugApi', 'isDebugLog'] 
+    configs: ['isDebugApi', 'isDebugLog'] // the key to set default value 'false' or you can set defined value by this way ——configs: [{isDebugApi:false}]
     }
 }
 ```
