@@ -2,7 +2,7 @@
  * @Author: Rhymedys/Rhymedys@gmail.com
  * @Date: 2017-12-11 10:56:58
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2019-07-18 14:55:30
+ * @Last Modified time: 2019-07-18 15:17:30
  */
 const utils = require('loader-utils')
 
@@ -10,8 +10,9 @@ module.exports = function (source, map, meta) {
   this.cacheable()
   const option = utils.getOptions(this) || {}
   const fileName = option.fileName && option.fileName.toLowerCase() || 'appconfig'
-  let lastFileSplitIndex = this.resourcePath.lastIndexOf('\\') || this.resourcePath.lastIndexOf('\/')
-  if (this.resourcePath && this.resourcePath.substring(lastFileSplitIndex+ 1, this.resourcePath.lastIndexOf('.')).toLowerCase() === fileName) {
+  let lastFileSplitIndex = this.resourcePath.lastIndexOf('\\') + 1 || this.resourcePath.lastIndexOf('\/') + 1
+  if (this.resourcePath && this.resourcePath.substring(lastFileSplitIndex, this.resourcePath.lastIndexOf('.')).toLowerCase() === fileName) {
+    console.log('set-product-config match file',fileName)
     let appConfig = option.configs
     if (appConfig) {
       let res = {}
@@ -27,6 +28,7 @@ module.exports = function (source, map, meta) {
       for (let [k, v] of Object.entries(res)) {
         let key = `exports.${k}`
         if (newSource.match(key)) {
+          console.log('change value',key)
           const keyPosition = newSource.indexOf(key)
           const replaceStartPosition = newSource.indexOf('\=', keyPosition)
           const replaceEndPosition = newSource.indexOf('\;', replaceStartPosition)
