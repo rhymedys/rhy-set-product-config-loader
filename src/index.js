@@ -2,7 +2,7 @@
  * @Author: Rhymedys/Rhymedys@gmail.com
  * @Date: 2017-12-11 10:56:58
  * @Last Modified by: Rhymedys
- * @Last Modified time: 2017-12-23 20:24:20
+ * @Last Modified time: 2019-07-18 14:25:19
  */
 const utils = require('loader-utils')
 
@@ -10,7 +10,8 @@ module.exports = function (source, map, meta) {
   this.cacheable()
   const option = utils.getOptions(this) || {}
   const fileName = option.fileName && option.fileName.toLowerCase() || 'appconfig'
-  if (this.resourcePath && this.resourcePath.substring(this.resourcePath.lastIndexOf('\\') + 1, this.resourcePath.lastIndexOf('.')).toLowerCase() === fileName) {
+  let lastFileSplitIndex = this.resourcePath.lastIndexOf('\\') + 1 || this.resourcePath.lastIndexOf('\/') + 1
+  if (this.resourcePath && this.resourcePath.substring(lastFileSplitIndex+ 1, this.resourcePath.lastIndexOf('.')).toLowerCase() === fileName) {
     let appConfig = option.configs
     if (appConfig) {
       let res = {}
