@@ -15,7 +15,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rhymedys/set-product-config-loader.git"
+    "url": "git+https://github.com/rhymedys/rhy-set-product-config-loader.git"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
